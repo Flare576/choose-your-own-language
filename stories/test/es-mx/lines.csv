@@ -1,0 +1,8 @@
+id,text,choice1_text,choice1_id,choice2_text,choice2_id,choice3_text,choice4_id,choice5_text,choice5_id
+"1-1","This is spanish version of 1-1", "Go to 1-2", "1-2", "Go to 1-3", "1-3", "Go to 1-4", "1-4", "Go to 1-5", "1-5", "Go to 1-6", "1-6"
+"1-2", "spanish - 1-2 You win"
+"1-3", "spanish - 1-3 You lose"
+"1-4", "spanish - 1-4 You die"
+"1-5", "spanish - 1-5 You don't know what just happened"
+"1-6", "spanish - 1-6 You doubt the authenticity"
+
