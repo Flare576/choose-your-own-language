@@ -4,15 +4,36 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Experimental!</title>
   <meta name="description" content="Welcome! I guess!">
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
+<script language='javascript'>
+  async function f (url) {
+    const result = await fetch(url);
+    return result.json();
+  }
+
+  async function kickit() {
+    console.log('hia');
+    const stories = await f('https://api.github.com/repos/Flare576/choose-your-own-language/contents/stories?ref=master');
+    for( story of stories) {
+      story.languages = await f(story.url);
+      for ( language of story.languages ) {
+        const linesRegex = new RegExp(language.path);
+        const linesUrl = language.url.replace(linesRegex, `${language.path}/lines.csv/`);
+        const rawText = atob((await f(linesUrl)).content);
+
+        language.lines = rawText.split('\\n').map(line => line.split('", "'));
+      }
+      console.log(stories);
+    }
+  }
+  </script>
 
 </head>
 
-<body>
-  <script src="js/scripts.js"></script>
+<body onload=kickit()>
   <div>Hi... I have no idea what I'm doing :D</div>
 </body>
 </html>
